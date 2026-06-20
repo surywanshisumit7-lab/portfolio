@@ -35,12 +35,11 @@
             <p>3rd Year B.Tech Student at DIEMS. Specialized in industrial CAD modeling, innovative product design, and
                 precision automated systems.</p>
 
-            <!-- Social Icons (Email Updated) -->
+            <!-- Social Icons -->
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/sumit-surywanshi-6b023a309" target="_blank"><i
                         class="fa-brands fa-linkedin-in"></i></a>
                 <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <!-- Direct Email Link -->
                 <a href="mailto:surywanshisumit7@gmail.com"><i class="fa-solid fa-envelope"></i></a>
             </div>
 
@@ -161,6 +160,8 @@
             <div class="line"></div>
         </div>
         <div class="timeline-container">
+
+            <!-- Item 1: B.Tech -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
@@ -169,16 +170,46 @@
                     <p class="inst-name">Deogiri Institute of Engineering and Management Studies (DIEMS)</p>
                 </div>
             </div>
+
+            <!-- Item 2: MSME -->
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <span class="timeline-date">96 Hours Training</span>
-                    <h3>📜 Professional SolidWorks Certification</h3>
-                    <p class="inst-name">Indo German Tool Room (IGTR)</p>
-                    <p class="timeline-details">Specialized training in complex parts assembly, surface modeling, and
-                        dynamic engineering drawings layout.</p>
+                    <span class="timeline-date">Dec 2025 - Jan 2026</span>
+                    <h3>📜 Entrepreneurship-cum-Skill Development (E-SDP)</h3>
+                    <p class="inst-name">MSME Technology Centre, Indo German Tool Room (IGTR), Aurangabad</p>
+                    <p class="timeline-details">Specialized national-level certification program focusing on
+                        <strong>Press Tool Design with Creo Parametric</strong> workflows, industrial mold
+                        architectures, and tool mechanics layout[cite: 1].
+                    </p>
                 </div>
             </div>
+
+            <!-- Item 3: CAD Universe -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Jan 2026 - Mar 2026</span>
+                    <h3>📜 Professional Creo Parametric Certification</h3>
+                    <p class="inst-name">CAD Universe (ISO 9001:2015 Certified), Osmanpura</p>
+                    <p class="timeline-details">Advanced training program in <strong>Creo Parametric Mechanical</strong>
+                        engineering streams, covering parametric assembly layout, structural part modeling synthesis,
+                        and dynamic design layouts[cite: 1].</p>
+                </div>
+            </div>
+
+            <!-- Item 4: IGTR SolidWorks -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">96 Hours Professional Layout</span>
+                    <h3>📜 SolidWorks Core Design Certification</h3>
+                    <p class="inst-name">Indo German Tool Room (IGTR)</p>
+                    <p class="timeline-details">Specialized training in complex structural layout setup, parametric
+                        surfacing modeling, and industry-grade fabrication drawings layout blueprint extraction.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -189,8 +220,8 @@
             <div class="line"></div>
         </div>
 
-        <!-- NEW Direct Contact Info Added Here -->
-        <div style="text-align: center; margin-bottom: 40px; color: #cbd5e1;">
+        <!-- Direct Contact Info -->
+        <div style="text-align: center; margin-bottom: 30px; color: #cbd5e1;">
             <p style="font-size: 18px; margin-bottom: 10px;">
                 <i class="fa-solid fa-envelope" style="color: #00d2ff; margin-right: 10px;"></i>
                 surywanshisumit7@gmail.com
@@ -201,16 +232,57 @@
             </p>
         </div>
 
-        <form action="#">
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Professional Email Address" required>
-            <textarea placeholder="Write project description or inquiry details here..." rows="5" required></textarea>
-            <button type="submit" class="btn">Submit Inquiry</button>
+        <!-- Inline background properties restored with proper dimensions -->
+        <form id="contact-form" onsubmit="return handle_final_submit(event)"
+            style="display: block; max-width: 600px; margin: 0 auto; text-align: left;">
+            <input type="text" name="name" placeholder="Full Name" required
+                style="display: block; width: 100%; background: #141b2d; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.06); font-size: 14px;">
+            <input type="email" name="email" placeholder="Professional Email Address" required
+                style="display: block; width: 100%; background: #141b2d; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.06); font-size: 14px;">
+            <textarea name="message" placeholder="Write project description or inquiry details here..." rows="5"
+                required
+                style="display: block; width: 100%; background: #141b2d; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.06); font-size: 14px; font-family: inherit; resize: vertical;"></textarea>
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="submit" id="submit-btn" class="btn">Submit Inquiry</button>
+            </div>
         </form>
     </section>
 
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
+
+    <!-- ================= EMAILJS INTEGRATION ================= -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        emailjs.init("ftuK5THazCp5rWYB-");
+
+        function handle_final_submit(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const form = document.getElementById('contact-form');
+            const btn = document.getElementById('submit-btn');
+
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            emailjs.sendForm('service_z7zvc23', 'template_s8jpcdp', form)
+                .then(() => {
+                    btn.innerText = 'Submit Inquiry';
+                    btn.disabled = false;
+                    alert('Awesome Sumit! Aapka message mujhe mil gaya hai. 👍');
+                    form.reset();
+                }, (err) => {
+                    btn.innerText = 'Submit Inquiry';
+                    btn.disabled = false;
+                    alert('Oops! Kuch gadbad hui. Please try again.');
+                    console.log("EmailJS Error: ", err);
+                });
+
+            return false;
+        }
+    </script>
 </body>
 
 </html>
